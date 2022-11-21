@@ -4,13 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -19,9 +15,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import br.com.vicente.R;
 import br.com.vicente.dao.AlunoDAO;
@@ -74,10 +67,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
         configurarFabNovoAluno();
         configurarLista();
 
-        for (int i = 0; i < 10; i++) {
-            alunoDao.salvar(new Aluno("vicente","9999999","sjaisaojsao"));
-            alunoDao.salvar(new Aluno("vicente","9999999","sjaisaojsao"));
-        }
+
 
 
 
@@ -128,8 +118,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
     }
 
     private void atualizaAlunos() {
-        adapter.clear();
-        adapter.addAll(alunoDao.buscarAlunos());
+        adapter.atualizaLista(alunoDao.buscarAlunos());
     }
 
     private void configurarLista() {
